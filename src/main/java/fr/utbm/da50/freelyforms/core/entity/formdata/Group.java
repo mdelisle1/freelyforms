@@ -31,12 +31,17 @@ public class Group {
         this.name = name;
         this.fields = fields;
     }
+    //seems to be necessary for ObjectMapper
+    public Group(){
+        this.name = "DEFAULT_NAME";
+        this.fields = null;
+    }
 
     /**
      * @return a stringified representation of the group
      */
     public String inspect() {
-        StringBuilder ret = new StringBuilder("group " + name);
+        StringBuilder ret = new StringBuilder("\nGroup[" + name + "]:");
         for (Field f : fields){
             ret.append("\n\t").append(f.inspect());
         }
