@@ -4,7 +4,8 @@ import lombok.Data;
 import org.springframework.data.annotation.PersistenceCreator;
 
 import java.util.ArrayList;
-//import java.util.UUID;
+import java.util.UUID;
+
 
 /**
  * The Material class holds the data. Its name mirrors the name of a field in the related Prefab class
@@ -18,14 +19,14 @@ import java.util.ArrayList;
  */
 @Data
 public class Material {
-//    /**
-//     * Each material has a unique Identifier
-//     * */
-//    private final String id;
+    /**
+     * Each material has a unique Identifier
+     * */
+    private final String _id;
     /**
      * Each material has a unique name
      * */
-    private final String name;
+    private String name;
     /**
      * Different types of material exist
      * */
@@ -41,13 +42,20 @@ public class Material {
 
     @PersistenceCreator
     public Material(String name, String type, String color, ArrayList<Location> locationArrayList){
-//        id = UUID.randomUUID().toString();
+        _id = UUID.randomUUID().toString();
         this.name = name;
         this.type = type;
         this.color = color;
         this.locationArrayList = locationArrayList;
     }
 
+    public Material(){
+        this._id = UUID.randomUUID().toString();
+        this.name="DEFAULT_NAME";
+        this.type = "DEFAULT_TYPE";
+        this.color = "#000000";
+        this.locationArrayList = null;
+    }
     /**
      * @return a stringified representation of the material and its locations
      */

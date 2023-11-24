@@ -1,6 +1,5 @@
 package fr.utbm.da50.freelyforms.core.entity.formdata;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.data.annotation.PersistenceCreator;
 
@@ -17,7 +16,6 @@ import java.util.UUID;
  * @author illuminatumSolis
  */
 @Data
-@AllArgsConstructor
 public class Location {
 
     /**
@@ -49,6 +47,12 @@ public class Location {
         this.radius = radius;
         this.x = x;
         this.y = y;
+    }
+    public Location(){
+        id = UUID.randomUUID().toString();
+        this.x = this.y = this.radius = 0;
+        this.address = "DEFAULT_ADDRESS";
+
     }
 
     public Boolean getType(){

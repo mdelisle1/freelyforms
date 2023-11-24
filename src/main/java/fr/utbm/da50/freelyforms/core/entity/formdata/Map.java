@@ -2,7 +2,9 @@ package fr.utbm.da50.freelyforms.core.entity.formdata;
 
 import lombok.Data;
 
+import javax.persistence.Id;
 import java.util.ArrayList;
+import java.util.UUID;
 
 /**
  * The Material class holds the data. Its name mirrors the name of a field in the related Prefab class
@@ -17,6 +19,8 @@ import java.util.ArrayList;
 @Data
 public class Map {
 
+    @Id
+    private final String _id;
     /**
      * An array list to store all materials
      * */
@@ -26,11 +30,14 @@ public class Map {
      * A map may be initialized with no data
      * */
     public Map(){
+        this._id = UUID.randomUUID().toString();
+        this.materialArrayList = null;
     }
     /**
      * Or initialized with data to be determined depending on front end implementation
      * */
     public Map(ArrayList<Material> materialArrayList){
+        this._id = UUID.randomUUID().toString();
         this.materialArrayList = materialArrayList;
     }
 
